@@ -14,3 +14,4 @@ profiles.clj
 .idea
 *.iml
 *.log
+.DS_Store
