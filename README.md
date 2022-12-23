@@ -2,8 +2,6 @@
 
 Embedded fake s3 for clojure based on minio, just packaged to make it easy to use for mocking in clojure land
 
-s3-clj.sqs-test.clj provides a good example of how to test and integration with sqs (using elasticmq)
-
 ## Usage
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.clojars.bigsy/s3-clj.svg)](https://clojars.org/org.clojars.bigsy/s3-clj)
