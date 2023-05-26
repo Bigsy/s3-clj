@@ -23,7 +23,7 @@
 (deftest can-wrap-around
   (testing "using custom db file"
     (aws/invoke s3 {:op :CreateBucket :request {:Bucket "wibble"}})
-    (is (= "wibble") (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0 :Name]))
+    (is (= "wibble" (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0 :Name])))
     (aws/invoke s3 {:op :DeleteBucket :request {:Bucket "wibble"}})
     (is (empty? (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0])))))
 

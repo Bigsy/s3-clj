@@ -21,8 +21,8 @@
 (def s3 (aws/client {:api                  :s3
                      :region "us-east-1"
                      :credentials-provider (credentials/basic-credentials-provider
-                                             {:access-key-id     "x"
-                                              :secret-access-key "x"})
+                                             {:access-key-id     "wibble"
+                                              :secret-access-key "wibble1234"})
                      :endpoint-override {:protocol :http
                                          :hostname "localhost"
                                          :port     9000}}))
@@ -30,7 +30,7 @@
 (deftest can-wrap-around
   (testing "using custom db file"
     (aws/invoke s3 {:op :CreateBucket :request {:Bucket "wibble"}})
-    (is (= "wibble") (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0 :Name]))
+    (is (= "wibble" (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0 :Name])))
     (aws/invoke s3 {:op :DeleteBucket :request {:Bucket "wibble"}})
     (is (empty? (get-in (aws/invoke s3 {:op :ListBuckets}) [:Buckets 0])))
     (is (.exists (clojure.java.io/file (str ms3/s3-directory "/.minio.sys"))))
